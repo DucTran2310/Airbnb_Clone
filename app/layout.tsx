@@ -1,3 +1,5 @@
+import ClientOnly from './components/ClientOnly';
+import Modal from './components/modals/Modal';
 import Navbar from './components/navbar/Navbar';
 import './globals.css';
 
@@ -21,7 +23,10 @@ export default async function RootLayout({
     return (
         <html lang="en">
             <body className={font.className}>
-                <Navbar />
+                <ClientOnly>
+                    <Modal actionLabel='Submit' title={"AdStar"} isOpen/>
+                    <Navbar />
+                </ClientOnly>
                 <div className="pb-20 pt-28">
                     {children}
                 </div>
