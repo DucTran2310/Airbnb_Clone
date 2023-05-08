@@ -91,7 +91,7 @@ const Modal: React.FC<ModalProps> = ({
                         md:w-4/6
                         lg:w-3/6
                         xl:w-2/5
-                        my-6
+                        my-2
                         mx-auto
                         h-full
                         lg:h-auto
@@ -131,7 +131,7 @@ const Modal: React.FC<ModalProps> = ({
                                 className="
                                    flex
                                    items-center
-                                   p-6
+                                   pt-1.5
                                    rounded-t
                                    justify-center
                                    relative
@@ -156,11 +156,11 @@ const Modal: React.FC<ModalProps> = ({
                                 </div>
                             </div>
                             {/* BODY */}
-                            <div className="relative p-6 flex-auto">
+                            <div className="relative p-6 pb-2 flex-auto">
                                 {body}
                             </div>
                             {/* FOOTER */}
-                            <div className="flex flex-col gap-2 p-6">
+                            <div className="flex flex-col gap-1 p-6">
                                 <div
                                     className="
                                         flex
@@ -185,6 +185,7 @@ const Modal: React.FC<ModalProps> = ({
                                         onClick={handleSubmit}
                                     />
                                 </div>
+                                {footer}
                             </div>
                         </div>
                     </div>
