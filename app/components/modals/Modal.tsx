@@ -113,6 +113,7 @@ const Modal: React.FC<ModalProps> = ({
                                 translate
                                 h-full
                                 lg:h-auto
+                                mt-[10%]
                                 md:h-auto
                                 border-0
                                 rounded-lg
