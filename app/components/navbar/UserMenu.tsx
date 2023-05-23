@@ -3,18 +3,26 @@
 import React, { useCallback, useState } from 'react';
 import { AiOutlineMenu } from "react-icons/ai";
 
-import MenuItem from "./MenuItem";
-import Avatar from "../Avatar";
+import useLoginModal from '@/app/hooks/useLoginModal';
 import useRegisterModal from '@/app/hooks/useRegisterModal';
+import { SafeUser } from '@/app/types';
+import { signOut } from 'next-auth/react';
+import Avatar from "../Avatar";
+import MenuItem from "./MenuItem";
 
+interface UserMenuProps {
+    currentUser?: SafeUser | null
+}
 
-const UserMenu = () => {
+const UserMenu: React.FC<UserMenuProps> = ({
+    currentUser
+}) => {
 
     const registerModal = useRegisterModal()
+    const loginModal = useLoginModal()
     const [isOpen, setIsOpen] = useState(false);
 
     const toggleOpen = useCallback(() => {
-        console.log('CLICK')
         setIsOpen((value) => !value);
     }, []);
 
@@ -58,7 +66,7 @@ const UserMenu = () => {
                 >
                     <AiOutlineMenu />
                     <div className="hidden md:block">
-                        <Avatar />
+                        <Avatar src={currentUser?.image}/>
                     </div>
                 </div>
             </div>
@@ -78,20 +86,53 @@ const UserMenu = () => {
                     "
                 >
                     <div className="flex flex-col cursor-pointer">
-                        <>
-                            <MenuItem
-                                label="Login"
-                                onClick={() => { }}
-                            />
-                            <MenuItem
-                                label="Sign up"
-                                onClick={registerModal.onOpen}
-                            />
-                        </>
+                        {
+                            currentUser ? (
+                                <>
+                                    <MenuItem
+                                        label="My trips"
+                                        onClick={() => {}}
+                                    />
+                                    <MenuItem
+                                        label="My favorites"
+                                        onClick={() => {}}
+                                    />
+                                    <MenuItem
+                                        label="My reservations"
+                                        onClick={() => {}}
+                                    />
+                                    <MenuItem
+                                        label="My properties"
+                                        onClick={() => {}}
+                                    />
+                                    <MenuItem
+                                        label="Airbnb my home"
+                                        onClick={() => {}}
+                                    />
+                                    <hr />
+                                    <MenuItem
+                                        label="Logout"
+                                        onClick={() => signOut()}
+                                    />
+                                </>
+                            ) : (
+                                <>
+                                    <MenuItem
+                                        label="Login"
+                                        onClick={loginModal.onOpen}
+                                    />
+                                    <MenuItem
+                                        label="Sign up"
+                                        onClick={registerModal.onOpen}
+                                    />
+                                </>
+                            )
+                        }
                     </div>
                 </div>
-            )}
-        </div>
+            )
+            }
+        </div >
     );
 }
 
