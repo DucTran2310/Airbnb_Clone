@@ -4,6 +4,7 @@ react-hot-toast
 prisma
 next-auth
 bcryptquery-string
+leaflet
 
 when run project, connect db by command npx prisma db push
 
