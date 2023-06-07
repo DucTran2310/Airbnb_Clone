@@ -44,6 +44,11 @@ if (!user || !user?.hashedPassword) {
 images: {
     domains: [
         "avatars.githubusercontent.com",
-        "lh3.googleusercontent.com"
+        "lh3.googleusercontent.com",
+        "res.cloudinary.com"
     ]
 }
+
+// Upload image lên cloudinary
+// cần có clould name 
+// tạo upload preset vs mode unsigned
