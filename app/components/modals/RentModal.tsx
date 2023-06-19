@@ -1,21 +1,20 @@
 'use client'
 
 import useRentModal from "@/app/hooks/useRentModal";
-import Modal from "./Modal";
-import { useMemo, useState } from "react";
-import Heading from "../Heading";
 import { categories } from "@/public/params/CategoriesParams";
-import CategoryInput from "../inputs/CategoryInput";
-import { FieldValue, FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import CountrySelect from "../inputs/CountrySelect";
+import axios from "axios";
 import dynamic from "next/dynamic";
+import { useRouter } from "next/navigation";
+import { useMemo, useState } from "react";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
+import Heading from "../Heading";
+import CategoryInput from "../inputs/CategoryInput";
 import Counter from "../inputs/Counter";
+import CountrySelect from "../inputs/CountrySelect";
 import ImageUpload from "../inputs/ImageUpload";
 import Input from "../inputs/Input";
-import { error } from "console";
-import { useRouter } from "next/navigation";
-import axios from "axios";
-import { toast } from "react-hot-toast";
+import Modal from "./Modal";
 
 enum STEPS {
     CATEGORY = 0,
